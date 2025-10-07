@@ -1,90 +1,196 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Operasi Menembak Jeany Wu 💘</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jeany Wu, Will You Be Mine? 💘</title>
   <style>
-    :root{--bg:#0f172a;--card:#0b1220;--accent:#ff6b6b;--muted:#9aa4b2}
-    html,body{height:100%;margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial}
-    body{background:radial-gradient(circle at 10% 10%, #13213b 0%, #071021 40%, var(--bg) 100%);display:flex;align-items:center;justify-content:center;color:#e6eef8}
-    .wrap{width:940px;max-width:94%;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));border-radius:16px;padding:28px;box-shadow:0 10px 30px rgba(2,6,23,0.6);display:grid;grid-template-columns:1fr 420px;gap:22px}
-    .left{padding:18px}
-    h1{margin:0 0 10px 0;font-size:26px}
-    p.lead{color:var(--muted);margin-top:6px}
-
-    .target-wrap{display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:18px}
-    .target{width:300px;height:300px;border-radius:50%;display:grid;place-items:center;position:relative;cursor:crosshair}
-    .ring{position:absolute;border-radius:50%}
-    .ring.r1{width:100%;height:100%;background:conic-gradient(from 180deg,#ff9aa2 0 12.5%, transparent 12.5% 25%);filter:blur(4px);opacity:0.12}
-    .ring.r2{width:86%;height:86%;background:radial-gradient(circle at center, #ffecec 0 6%, transparent 6% 100%);box-shadow:inset 0 6px 20px rgba(255,0,0,0.06)}
-    .bull{width:40px;height:40px;border-radius:50%;background:var(--accent);display:grid;place-items:center;color:white;font-weight:700;transform:scale(1);transition:transform .18s ease}
-
-    .card{background:rgba(255,255,255,0.02);padding:18px;border-radius:12px;height:100%;display:flex;flex-direction:column;gap:12px}
-    label{font-size:13px;color:var(--muted)}
-    input[type=text], textarea, select{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;outline:none}
-    textarea{min-height:96px;resize:vertical}
-    button{background:var(--accent);border:none;padding:10px 14px;border-radius:10px;color:white;font-weight:700;cursor:pointer}
-    .small{font-size:13px;color:var(--muted)}
-    .confetti{position:fixed;left:0;top:0;pointer-events:none;width:100%;height:100%;overflow:hidden}
-    .confetti .piece{position:absolute;width:10px;height:14px;opacity:0;transform:translateY(-20px) rotate(0deg)}
-    .result{margin-top:12px;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));min-height:76px;display:grid;place-items:center}
-    @media (max-width:880px){.wrap{grid-template-columns:1fr;}.target{width:260px;height:260px}}
+    :root {
+      --accent: #ff6699;
+      --text: #333;
+      --bg1: #b3e5fc;
+      --bg2: #e1f5fe;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top left, var(--bg1), var(--bg2));
+      font-family: "Poppins", sans-serif;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 2.4rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      animation: fadeIn 1s ease-in-out;
+    }
+    p {
+      font-size: 1rem;
+      max-width: 420px;
+      margin: 0.5rem auto 1.2rem;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .btns {
+      display: flex;
+      gap: 1rem;
+      position: relative;
+      height: 60px;
+      margin-top: 10px;
+    }
+    button {
+      background-color: var(--accent);
+      border: none;
+      padding: 12px 24px;
+      color: white;
+      border-radius: 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.3s;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+    .no-btn {
+      background-color: #aaa;
+      position: absolute;
+      transition: left 0.4s ease, top 0.4s ease;
+    }
+    .footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+    .hearts span {
+      position: absolute;
+      display: block;
+      color: #ff6699;
+      animation: float 6s linear infinite;
+      bottom: -10%;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-110vh) rotate(720deg); opacity: 0; }
+    }
+    .confetti {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .confetti-piece {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: hsl(calc(360 * var(--i) / 50), 100%, 70%);
+      animation: fall 3s linear infinite;
+    }
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="left">
-      <h1>Operasi Menembak Jeany Wu 🎯</h1>
-      <p class="lead">Khusus untuk Jeany Wu, klik hati untuk lihat pesan spesial 💌</p>
-
-      <div class="target-wrap">
-        <div id="target" class="target" title="Klik untuk menembak Jeany Wu">
-          <div class="ring r1"></div>
-          <div class="ring r2"></div>
-          <div id="bull" class="bull">❤</div>
-        </div>
-        <div class="small">Tembakan: <span id="shots">0</span></div>
-        <div class="result" id="result">Jeany, siap-siap... tembakannya datang 😉</div>
-      </div>
-
-      <p class="small" style="margin-top:10px">Website ini dibuat khusus untuk Jeany Wu 💕</p>
-      <p class="small">Buka di browser: <a href="https://jeanywu-love.vercel.app" target="_blank" style="color:#ff6b6b">https://jeanywu-love.vercel.app</a></p>
-    </div>
-
-    <div class="card">
-      <div>
-        <label for="title">Judul Pesan untuk Jeany</label>
-        <input id="title" type="text" value="Jeany Wu, aku menembak kamu bukan pakai peluru — tapi pakai hati!" />
-      </div>
-      <div>
-        <label for="message">Pesan untuk Jeany 💖</label>
-        <textarea id="message">Hai Jeany Wu 💘\nMaukah kamu jadi pacarku? (klik hati untuk jawab 'iya'... atau setidaknya senyum dulu)</textarea>
-      </div>
-      <div>
-        <label for="style">Gaya Reaksi</label>
-        <select id="style">
-          <option value="cute">Imut & Manis</option>
-          <option value="silly">Kocak & Lebay</option>
-          <option value="drama">Drama (pakai dialog sinetron)</option>
-        </select>
-      </div>
-      <div style="display:flex;gap:10px;margin-top:auto;align-items:center">
-        <button id="save">Simpan Pesan</button>
-        <button id="reset" style="background:transparent;border:1px solid rgba(255,255,255,0.06);color:inherit">Reset</button>
-      </div>
-      <div style="margin-top:8px;color:var(--muted);font-size:13px">Preview Pesan:</div>
-      <div id="preview" style="padding:10px;border-radius:8px;background:rgba(255,255,255,0.01);color:inherit">
-        <strong id="pv-title">Jeany Wu, aku menembak kamu bukan pakai peluru — tapi pakai hati!</strong>
-        <div id="pv-message" style="margin-top:6px">Hai Jeany Wu 💘\nMaukah kamu jadi pacarku? (klik hati untuk jawab 'iya'... atau setidaknya senyum dulu)</div>
-      </div>
+    <h1>Jeany Wu, Will You Be Mine? 💘</h1>
+    <p>maaf ya kalau alay soalnya aku anak informatika 😅 semoga ini jadi pengalaman unikmu saat aku menembakmu 💕 love you sayang 💖</p>
+    <div class="btns" id="btnContainer">
+      <button class="yes-btn" id="yesBtn" onclick="acceptLove()">Iya, Aku Mau 💞</button>
+      <button class="no-btn" id="noBtn">Tidak dulu 😅</button>
     </div>
   </div>
 
-  <div class="confetti" id="confetti"></div>
+  <div class="hearts"></div>
+  <div class="confetti"></div>
+  <div class="footer">From Joji <3</div>
+
+  <audio id="bg-music" autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9f9e62eb3e.mp3?filename=romantic-background-112369.mp3" type="audio/mpeg">
+  </audio>
 
   <script>
-    const target=document.getElementById('target');const bull=document.getElementById('bull');const shotsEl=document.getElementById('shots');const result=document.getElementById('result');const confettiRoot=document.getElementById('confetti');const titleInput=document.getElementById('title');const messageInput=document.getElementById('message');const saveBtn=document.getElementById('save');const resetBtn=document.getElementById('reset');const pvTitle=document.getElementById('pv-title');const pvMessage=document.getElementById('pv-message');const styleSelect=document.getElementById('style');let shots=0;let saved={title:titleInput.value,message:messageInput.value,style:styleSelect.value};function updatePreview(){pvTitle.textContent=titleInput.value;pvMessage.textContent=messageInput.value;}titleInput.addEventListener('input',updatePreview);messageInput.addEventListener('input',updatePreview);saveBtn.addEventListener('click',()=>{saved={title:titleInput.value,message:messageInput.value,style:styleSelect.value};result.textContent='Pesan untuk Jeany disimpan! 💌'});resetBtn.addEventListener('click',()=>{titleInput.value='Jeany Wu, aku menembak kamu bukan pakai peluru — tapi pakai hati!';messageInput.value='Hai Jeany Wu 💘\\nMaukah kamu jadi pacarku?';styleSelect.value='cute';updatePreview();result.textContent='Kembali ke pengaturan awal.'});function burstConfetti(x,y){for(let i=0;i<28;i++){const el=document.createElement('div');el.className='piece';el.style.left=(x+(Math.random()-0.5)*120)+'px';el.style.top=(y+(Math.random()-0.5)*40)+'px';el.style.transform=`rotate(${Math.random()*360}deg)`;el.style.opacity=1;el.style.background=['#ff6b6b','#ffd166','#6bcB77','#66d9ff','#c58bff'][Math.floor(Math.random()*5)];confettiRoot.appendChild(el);const dur=1200+Math.random()*800;el.animate([{transform:`translateY(0) rotate(${Math.random()*360}deg)`,opacity:1},{transform:`translateY(${200+Math.random()*200}px) rotate(${Math.random()*720}deg)`,opacity:0}],{duration:dur,easing:'cubic-bezier(.2,.8,.2,1)'}).onfinish=()=>el.remove();}}function showResult(){shots++;shotsEl.textContent=shots;bull.style.transform='scale(1.25)';setTimeout(()=>bull.style.transform='scale(1)',180);const rect=target.getBoundingClientRect();const cx=rect.left+rect.width/2;const cy=rect.top+rect.height/2;burstConfetti(cx,cy);let text='';const s=saved.style;if(s==='cute'){text=`<strong>${escapeHtml(saved.title)}</strong><br><span style=\"color:var(--muted)\">${escapeHtml(saved.message).replace(/\n/g,'<br>')}</span>`;}else if(s==='silly'){text=`<strong>Ups! Tembakan kena, Jeany! 😜</strong><br>${escapeHtml(saved.message).replace(/\n/g,'<br>')}<br><em>PS: Kalau nggak mau, balas \'nyasar\' aja ya 😉</em>`;}else{text=`<strong>Drama Time!</strong><br>(${escapeHtml(saved.title)})<br>\"${escapeHtml(saved.message).replace(/\n/g,'<br>')}\"<br><em>--- adegan dipotong ---</em>`;}result.innerHTML=text;}function escapeHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\"/g,'&quot;');}target.addEventListener('click',ev=>{ev.preventDefault();saved={title:titleInput.value,message:messageInput.value,style:styleSelect.value};showResult();});updatePreview();
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const hearts = document.querySelector('.hearts');
+    const confettiContainer = document.querySelector('.confetti');
+    let moveCooldown = false;
+
+    function createHeart() {
+      const heart = document.createElement('span');
+      heart.innerHTML = '💖';
+      heart.style.left = Math.random() * 100 + '%';
+      heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+      heart.style.animationDuration = 4 + Math.random() * 4 + 's';
+      hearts.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 500);
+
+    
+    document.addEventListener('mousemove', (e) => {
+      if (moveCooldown) return;
+      const rect = noBtn.getBoundingClientRect();
+      const yesRect = yesBtn.getBoundingClientRect();
+      const distance = Math.hypot(
+        e.clientX - (rect.left + rect.width / 2),
+        e.clientY - (rect.top + rect.height / 2)
+      );
+
+      if (distance < 100) {
+        moveCooldown = true;
+
+        let x, y;
+        do {
+          x = Math.random() * (window.innerWidth - rect.width);
+          y = Math.random() * (window.innerHeight - rect.height - 100);
+        } while (
+          x > yesRect.left - 120 &&
+          x < yesRect.right + 120 &&
+          y > yesRect.top - 60 &&
+          y < yesRect.bottom + 60
+        );
+
+        noBtn.style.left = `${x}px`;
+        noBtn.style.top = `${y}px`;
+        setTimeout(() => moveCooldown = false, 600);
+      }
+    });
+
+    
+    function acceptLove() {
+      alert("Hehehe... jadi ketahuan ya? ❤️");
+      for (let i = 0; i < 50; i++) {
+        const piece = document.createElement('div');
+        piece.classList.add('confetti-piece');
+        piece.style.setProperty('--i', i);
+        piece.style.left = Math.random() * 100 + '%';
+        piece.style.animationDuration = 2 + Math.random() * 3 + 's';
+        confettiContainer.appendChild(piece);
+        setTimeout(() => piece.remove(), 3000);
+      }
+    }
   </script>
 </body>
 </html>
